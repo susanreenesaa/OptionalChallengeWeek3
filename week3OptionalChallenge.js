@@ -1,27 +1,33 @@
-// my challenge is that the code prints only one missing number. 
-// if two numbers are missing cocurrently, it prints only one
-var number=['1','3','5','8','10'];
-var num1=[];
-var missingNum;
-function findMissingNumbers(numArray){
-    if(numArray[0]>1 || numArray[numArray-1]<1){
-        missingNum=1;
+function missing(arr) {
+    arraySort(arr);
+    const result = [];
+    if (arr.length <= 1) {
+         return result 
     }
-    else{
-        for(var i=0; i < numArray.length; i++){
-        
-            if((numArray[i]- numArray[i-1]) >  1){
-                missingNum = parseInt(number[i-1])+ 1;
-                num1.push(missingNum);
-           
-               
-            }
-            
-           
-        }
-     }
-    return ("missing numbers are  " + num1)
-   
+    var i = 1, val = arr[0] + 1;
+    //not sure whatthis does.
+    const count = ((arr[arr.length - 1]) - val) - (arr.length - 2);
+    while (result.length < count) {
+        while (arr[i] !== val) { result.push(val++) }
+        i++;
+        val++;
+    }
+    return result;
 }
-console.log(findMissingNumbers(number))
-console.log(findMissingNumbers([1,5,7,9,12,14]));
+
+function arraySort(m){
+    for (i=0; i<m.length; i++){
+    for(var j=i+1; j < m.length; j++){
+        if( m[j]< m[i]){
+            temp=parseInt(m[j]);
+            m[j]=parseInt(m[i]);
+            m[i]=temp;
+        }
+         }
+}
+return m
+}
+
+console.log(missing([0,4,6,8]));
+console.log(missing([-2,0,6,-4,3,1]));
+console.log(arraySort([-2,0,6,-4,3,1]));
