@@ -1,47 +1,42 @@
 const findTheMissing = (target) => {
     // final result list
     arraySort(target);
-    newArray=[...new Set(target)];
-    let result = [];
+    let newArray=[...new Set(target)];
+    let missingValues = [];
     
     // array will go from min to max value present in the array
     const min = newArray[0];
     const max = newArray[newArray.length - 1];
     
     // will maintain the track of index of newArray array
-    // will start from 2nd element of array because we need a no. to subsctract from
+    // will start from 2nd element of array because we need a no. to subtract from
     let pivotIndex = 1;
     
-    for (let index = min; index < max; index++) {
+    for (let i = min; i < max; i++) {
     
-        // value to the index
         let pivotValue = newArray[pivotIndex];
     
-        // dif of the value
-        let diff = pivotValue - index;
+        let diff = pivotValue - i;
     
-        // diff means its time to move the pivot to next :P
         if (diff > 0) {
-            // not going to current index at exists in the newArray array
-            if (index === newArray[pivotIndex - 1])
-                index++;
+            if (i === newArray[pivotIndex - 1])
+                i++;
     
-            // YO!! WE FOUND HE MISSING
-            result.push(index);
+             missingValues.push(i);
         }
         else {
             pivotIndex++;
         }
     }
-    return result; 
+    return missingValues; 
 }
 function arraySort(m){
     for (i=0; i<m.length; i++){
     for(var j=i+1; j < m.length; j++){
         if( m[j]< m[i]){
-            temp=parseInt(m[j]);
-            m[j]=parseInt(m[i]);
-            m[i]=temp;
+            
+            [m[j], m[i]] = [parseInt(m[i]), parseInt(m[j])];
+
         }
          }
 }
