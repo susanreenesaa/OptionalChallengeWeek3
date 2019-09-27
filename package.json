@@ -1,0 +1,15 @@
+{
+  "name": "week3OptionalChallenge",
+  "version": "1.0.0",
+  "description": "sorts a given array and returns missing numbers",
+  "main": "index.js",
+  "repository": "https://github.com/susanreenesaa/OptionalChallengeWeek3.git",
+  "author": "reenesa <susannins@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^24.9.0"
+  }
+}

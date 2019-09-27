@@ -1,5 +1,9 @@
-const findTheMissing = (target) => {
-    // final result list
+function findTheMissing (target){
+   
+    if(typeof target !== "object" || target.length === 0){
+        return 'Invalid input'
+    }
+    else{
     arraySort(target);
     let newArray=[...new Set(target)];
     let missingValues = [];
@@ -10,25 +14,26 @@ const findTheMissing = (target) => {
     
     // will maintain the track of index of newArray array
     // will start from 2nd element of array because we need a no. to subtract from
-    let pivotIndex = 1;
+    let j = 1;
     
     for (let i = min; i < max; i++) {
     
-        let pivotValue = newArray[pivotIndex];
+        let pivotValue = newArray[j];
     
         let diff = pivotValue - i;
     
         if (diff > 0) {
-            if (i === newArray[pivotIndex - 1])
+            if (i === newArray[j - 1])
                 i++;
     
              missingValues.push(i);
         }
         else {
-            pivotIndex++;
+            j++;
         }
     }
     return missingValues; 
+}
 }
 function arraySort(m){
     for (i=0; i<m.length; i++){
@@ -42,7 +47,13 @@ function arraySort(m){
 }
 return m
 }
+
 var x =[0,4,6,8];
-var y=[-2,0,6,-4,3,3,3,1];
+// var y=[-2,0,6,-4,3,3,3,1];
 console.log( "The array is  " + x + " missing numbers are:  " + findTheMissing(x));
-console.log("The array is  " + arraySort(y) + " missing numbers are:  " + findTheMissing(y));
+// console.log("The array is  " + arraySort(y) + " missing numbers are:  " + findTheMissing(y));
+
+module.exports = findTheMissing;
+
+
+
